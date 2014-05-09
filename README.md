@@ -72,7 +72,7 @@ This generates a mapping file `mydb.ttl` for your database.
 
 ### Dumping the database
 
-```./dump-rdf -m mydb.ttl -o dump.nt```
+```./dump-rdf -o dump.nt mydb.ttl```
 
 This creates `dump.nt`, a dump containing the mapped RDF in N-Triples format.
 
