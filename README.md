@@ -84,6 +84,29 @@ This starts up a server at http://localhost:2020/
 
 ### Deploying D2R Server into a servlet container
 
+Add a server configuration block to your mapping file.  An example is below
+```
+@prefix d2r: <http://sites.wiwiss.fu-berlin.de/suhl/bizer/d2r-server/config.rdf#> .
+@prefix meta: <http://www4.wiwiss.fu-berlin.de/bizer/d2r-server/metadata#> .
+
+<> a d2r:Server;
+  rdfs:label "My D2R Server";
+  d2r:baseURI <http://servername:8080/d2rq/>;
+  d2r:port 8080;
+  d2r:vocabularyIncludeInstances true;
+  
+  d2r:sparqlTimeout 300;
+  d2r:pageTimeout 5;
+
+  meta:datasetTitle "My dataset" ;
+  meta:datasetDescription "My dataset contains many nice resources." ;
+  meta:datasetSource "This other dataset" ;
+  
+  meta:operatorName "John Doe" ;
+  meta:operatorHomepage  ;
+  .
+```
+
 Edit `/webapp/WEB-INF/web.xml` to point the `configFile` parameter to the location of your mapping file.
 
 Build a war file with `ant war`.
